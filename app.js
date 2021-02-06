@@ -18,7 +18,7 @@ yargs.command({
             type: 'string'
         }
     },
-    handler: (argv) => {
+    handler(argv) {
         notes.add(argv.title, argv.body);
     }
 });
@@ -33,9 +33,17 @@ yargs.command({
             type: 'string'
         }
     },
-    handler: (argv) => {
+    handler(argv) {
         notes.remove(argv.title);
     }
-})
+});
+
+yargs.command({
+    command: 'list',
+    describe: 'Lists all the notes present to the console',
+    handler(argv) {
+        notes.list();
+    }
+});
 
 yargs.parse();
